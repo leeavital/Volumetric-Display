@@ -6,7 +6,6 @@
 #include <GL/glu.h>
 #include <GL/gl.h>
 
-using namespace std;
 
 
 // forward declarations
@@ -61,34 +60,49 @@ int main(int argc, char** argv)
 
 
 
+int time;
+int fps = 60;
+
 void renderScene(){
   
-  printf("rendering with angle = %f\n", angle);
-  // clear
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
+
+  int temptime=glutGet(GLUT_ELAPSED_TIME);
+
+  if(temptime - time > 1000.0 / fps){
 
 
-  // get rid of any transforations
-  glLoadIdentity();
+    printf("rendering with angle = %f\n", angle);
+    // clear
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
 
 
-  glRotatef(angle, 0.0f, 1.0f, 0.0f);
-  glRotatef(angle, 2.0f, 0.0f, 0.0f);
+    // get rid of any transforations
+    glLoadIdentity();
+
+
+    glRotatef(angle, 1.0f, 0.0f, 0.0f);
 
 
 
-  // render a triangle
-  glBegin(GL_TRIANGLES);
-    glVertex3f(-0.5,-0.5,0.0);
-    glVertex3f(0.5,0.0,0.0);
-    glVertex3f(0.0,0.5,0.0);
-  glEnd();
- 
+    // render a triangle
+    glBegin(GL_TRIANGLES);
+      glVertex3f(-0.5,-0.5,0.0);
+      glVertex3f(0.5,0.0,0.0);
+      glVertex3f(0.0,0.5,0.0);
+    glEnd();
+   
 
-  angle += 1;
-  
+    angle += 1;
+    
 
-  glutSwapBuffers();
+    glutSwapBuffers();
+    
+    time = temptime;
+
+  }else{
+      // skip
+  } 
+
 }
 
 

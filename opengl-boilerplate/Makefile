@@ -6,12 +6,15 @@
 # you need to download the glut libraries and put them in separate lib and
 # include libraries.
 
+
 # this is the directory that contains glut.h
 GLUTINC = "C:\MinGW\GLUT\include"
+
 
 # this contains the .lib (and .dll files)
 # the tutorial says to include the .dll in the system path, C:\System32
 GLUTLIB = "C:\MinGW\GLUT\lib"
+
 
 # The path to the MinGW compiler. You may need this if you 
 # are using g++ by default
